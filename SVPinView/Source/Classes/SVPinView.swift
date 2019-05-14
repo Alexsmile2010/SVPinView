@@ -323,13 +323,16 @@ extension SVPinView : UICollectionViewDataSource, UICollectionViewDelegate, UICo
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
-            let width = (collectionView.bounds.width - (interSpace * CGFloat(max(pinLength, 1) - 1)))/CGFloat(pinLength)
-            return CGSize(width: width, height: collectionView.frame.height)
-        }
-        let width = (collectionView.bounds.width - (interSpace * CGFloat(max(pinLength, 1) - 1)))/CGFloat(pinLength)
-        let height = collectionView.frame.height
-        return CGSize(width: min(width, height), height: min(width, height))
+//        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+//            let width = (collectionView.bounds.width - (interSpace * CGFloat(max(pinLength, 1) - 1)))/CGFloat(pinLength)
+//            return CGSize(width: width, height: collectionView.frame.height)
+//        }
+//        let width = (collectionView.bounds.width - (interSpace * CGFloat(max(pinLength, 1) - 1)))/CGFloat(pinLength)
+//        let height = collectionView.frame.height
+//        return CGSize(width: min(width, height), height: min(width, height))
+        let spacingWidth = interSpace * (CGFloat(pinLength - 1))
+        let w = (collectionView.bounds.size.width - spacingWidth) / CGFloat(pinLength)
+        return CGSize(width: w , height: collectionView.bounds.size.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
